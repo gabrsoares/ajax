@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo Ajax</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <title>Github API</title>
 </head>
 <body>
-    <h1>AJAX</h1>
-    <div id="main"></div>
-        <input type="text" placeholder="Insira o seu nome de usuário" id="username">
+    <section>
+        <img id="img-logo" src="./images/githublogo.png" alt="logo github">
+        <h1>Github</h1>
+        <div id="main">
+            <div id="content"></div>
+        </div>
+        <input type="text" placeholder="Insira o nome do usuário" id="username">
+    </section>
     <script src="./js/script.js"></script>
     <script src="./js/post.js"></script>
 </body>

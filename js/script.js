@@ -1,5 +1,6 @@
 const url = 'https://api.github.com/users';
 const main = document.getElementById('main')
+const img = document.getElementById('img-profile')
 // let user = 'marcelocant'
 let text = ''
 
@@ -13,8 +14,8 @@ function getUser(user) {
     })
         .then((response) => response.json())
         .then((data) => {
-            text += `<p>${data.name} possui ${data.public_repos} repositórios públicos no GitHub como ${data.login}</p>`
-            main.innerHTML = text
+            text = `<div id="content"><img src=${data.avatar_url} class="img-profile" alt="imagem perfil"></img><p>${data.name} possui ${data.public_repos} repositórios públicos no GitHub como ${data.login}</p></div> <br>`
+            main.innerHTML += text
         })
         .catch((error) => console.error('Erro: ', error.message || error))
 
