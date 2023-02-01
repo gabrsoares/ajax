@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de formulário</title>
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Testando formulário</h1>
+    <div class="container">
+        <form action="" id="form">
+            <label for="nome">Nome</label>
+            <input type="text" class="not-null" id="nome" name="nome">
+            <label for="email">Email</label>
+            <input type="text" class="not-null" id="email" name="email">
+            <label for="cpf">CPF</label>
+            <input type="text" class="not-null" id="cpf" name="cpf">
+            <label for="cep">CEP</label>
+            <input type="text" class="not-null" id="cep" name="cep">
+            
+            <div class="address">
+                <div class="input-group">
+                    <label for="rua">Rua</label>
+                    <input type="text" id="rua" size="50">
+                </div>
+                <div class="input-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" size="30">
+                </div>
+                <div class="input-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" size="30">
+                </div>
+                <div class="input-group">
+                    <label for="uf">UF</label>
+                    <input type="text" id="uf" size="2">
+                </div>
+            </div>
+            
+            <button>Cadastrar</button>
+        </form>
+    </div>
+    <div id="mensagem"></div>
+    <script src="./js/form.js"></script>
+</body>
+</html>
