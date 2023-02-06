@@ -1,18 +1,31 @@
 //import fetch from "node-fetch"
+let form = document.getElementById('form')
+let result = document.getElementById('resultado')
 
-let _data = {
-    title: "teste de envio",
-    body: "lorem ipsum sit dolor amet consectur",
-    userId: "5"
-}
+form.addEventListener('submit', function(event){
+    
+    event.preventDefault()
+    
+    let title = document.getElementById('title').value
+    let body = document.getElementById('body').value
 
-fetch('https://jsonplaceholder.typicode.com/posts/', {
-    method: 'POST',
-    body: JSON.stringify(_data),
-    headers: {
-        'Content-Type' : 'application/json; charset=UTF-8'
-    }
+    
+    fetch('https://jsonplaceholder.typicode.com/posts/', {
+        method: 'POST',
+        body: JSON.stringify({
+            title:title,
+            body:body
+        }),
+        headers: {
+            'Content-Type' : 'application/json; charset=UTF-8'
+        }
+    })
+        .then( response => response.json())
+        .then(data => {
+            console.log(data)
+            result.innerHTML += `<div class= "resposta"><h2>${data.title}</h2>
+            <p>${data.body}</p></div>
+            `
+        })
+        .catch(error => console.error(error))   
 })
-    .then( response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error(error))
