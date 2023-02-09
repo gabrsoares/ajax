@@ -21,52 +21,73 @@ function validaEmail(elem) {
 
 function validaCep(elem) {
     if (!elem.value.match(/^[0-9]{8}/))
-        return `Digite um <strong>CEP</strong> válido`;
+    return `Digite um <strong>CEP</strong> válido`;
     else return '';
 }
 
-function updateAdress(data) {
-    if(!('erro' in data)) {
-        rua.value = (data.logradouro);
-        bairro.value = (data.bairro);
-        cidade.value = (data.localidade);
-        uf.value = (data.uf);
-    } else {
-        mensagem.innerHTML = `CEP não encontrado`
-    }
-}
+// function updateAdress(data) {
+//     if(!('erro' in data)) {
+//         rua.value = (data.logradouro);
+//         bairro.value = (data.bairro);
+//         cidade.value = (data.localidade);
+//         uf.value = (data.uf);
+//     } else {
+//         mensagem.innerHTML = `CEP não encontrado`
+//     }
+// }
 
 form.addEventListener('submit', function(event){
     event.preventDefault();
     
     let msg = []
     let markup = ''
-
+    
     Array.from(notNull).forEach(field => {
         let fieldState = isEmpty(field);
         if(fieldState)
-            msg.push(fieldState);
+        msg.push(fieldState);
     });
-
+    
     const isEmail = validaEmail(email);
     if(isEmail) msg.push(isEmail)
-
+    
     const isCep = validaCep(cep);
     if(isCep){
         msg.push(isCep)
-    } else {
-        const script = document.createElement('script');
-        script.src = 'https://viacep.com.br/ws/' + cep.value + '/json?callback=updateAdress'
-        document.body.appendChild(script)
     }
-        
-
     
-
+    
+    
+    
     msg.forEach(item => {
         markup += `<p>${item}</p>`
     })
-
-
+    
+    
     mensagem.innerHTML = markup;
 });
+
+cep.addEventListener('blur', () => {
+    fetch(`https://viacep.com.br/ws/${cep.value.replace("-","")}/json`, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default'
+    })
+    .then( response =>  response.json())
+    .then( data => {
+        rua.value = (data.logradouro);
+        bairro.value = (data.bairro);
+        cidade.value = (data.localidade);
+        uf.value = (data.uf);
+    } )
+    .catch((error) => {
+        console.error('Erro', error.message || error)
+        mensagem.innerHTML = `CEP não encontrado`
+    })
+    if(cep.value < 1) {
+        rua.value = '';
+        bairro.value = '';
+        cidade.value = '';
+        uf.value = '';
+    }
+    })
