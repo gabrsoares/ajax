@@ -32,4 +32,3 @@ Criado por Roy Fielding, um dos criadores do HTTP
 - Validar dados, documentos, números importantes (CPF, CEP, Telefone, Número de Cartão, .... )
 - Prevenção de vulnerabilidades como SQL Injection
 - Tarefa do front-end, que podem ser processadas pelo back-end
-https://viacep.com.br/ws/''/json?callback=updateAdress
